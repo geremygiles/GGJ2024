@@ -14,6 +14,7 @@ public class TextController : MonoBehaviour
     private string textInputString;
     private string[] substrings;
     private int substringIndex;
+    private float addtYield = 0;
 
     [SerializeField] private bool playing = true;
 
@@ -65,15 +66,21 @@ public class TextController : MonoBehaviour
         textInputString = currentTextInputObject.textString;
 
         substrings = textInputString.Split("\n\n");
+
+        for (int i = 0; i < substrings.Length; i++)
+        {
+            substrings[i] = substrings[i].Trim();
+        }
     }
 
     private IEnumerator TimedPrint()
     {
-        while (index < substrings[substringIndex].Length - 1 && playing)
+        while (index < substrings[substringIndex].Length && playing)
         {
             AddCharacter();
-            yield return new WaitForSeconds(0.1f / currentTextInputObject.charSpeed);
+            yield return new WaitForSeconds(0.1f / currentTextInputObject.charSpeed + addtYield);
         }
+        playing = false;
     }
 
     /// <summary>
@@ -88,6 +95,9 @@ public class TextController : MonoBehaviour
             case ' ':
                 currentOutputString += substrings[substringIndex][index];
                 index++;
+                break;
+
+            case '.':
                 break;
 
             default:
