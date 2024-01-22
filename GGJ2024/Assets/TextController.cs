@@ -6,6 +6,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class UIElements
+{
+    public GameObject UI_TextBox;
+    public Image UI_Border;
+    public Image UI_Box;
+    public TextMeshProUGUI UI_Text;
+
+    public GameObject UI_FaceBox;
+    public Image UIFace_Border;
+    public Image UIFace_Box;
+    public Image UIFace_Face;
+    public Image UIName_Border;
+    public Image UIName_Box;
+    public TextMeshProUGUI UIName_Text;
+}
+
 public class TextController : MonoBehaviour
 {
     [SerializeField] Text currentTextInputObject;
@@ -16,18 +33,18 @@ public class TextController : MonoBehaviour
     private int substringIndex;
     private float addtYield = 0;
 
+    [SerializeField] private float addtYieldValue = 0.5f;
+
     [SerializeField] private bool playing = true;
 
-    [SerializeField] private GameObject UI_TextBox;
-    [SerializeField] private Image UI_Border;
-    [SerializeField] private Image UI_Box;
-    [SerializeField] private TextMeshProUGUI UI_Text;
+    [SerializeField] UIElements uiElements;
 
 
     // Start is called before the first frame update
     void Start()
     {
         ExtractString();
+        LoadSpeakerData();
         StartCoroutine(TimedPrint());
     }
 
@@ -38,9 +55,6 @@ public class TextController : MonoBehaviour
         {
             if (!playing) {
                 IterateSubstring();
-                playing = true;
-
-                StartCoroutine(TimedPrint());
             }
             
             else
@@ -73,12 +87,28 @@ public class TextController : MonoBehaviour
         }
     }
 
+
+    private void LoadSpeakerData()
+    {
+        if (!(currentTextInputObject.speakerName == ""))
+        {
+            uiElements.UIName_Text.text = currentTextInputObject.speakerName;
+        }
+        
+        if (!(currentTextInputObject.face == null))
+        {
+            uiElements.UIFace_Face.sprite = currentTextInputObject.face;
+        }
+        
+    }
+
     private IEnumerator TimedPrint()
     {
         while (index < substrings[substringIndex].Length && playing)
         {
             AddCharacter();
             yield return new WaitForSeconds(0.1f / currentTextInputObject.charSpeed + addtYield);
+            addtYield = 0;
         }
         playing = false;
     }
@@ -98,6 +128,16 @@ public class TextController : MonoBehaviour
                 break;
 
             case '.':
+            case '!':
+            case '?':
+                if (!(index == substrings[substringIndex].Length - 1))
+                {
+                    addtYield = addtYieldValue;
+                }
+                break;
+
+            case ',':
+                addtYield = addtYieldValue/8;
                 break;
 
             default:
@@ -114,17 +154,39 @@ public class TextController : MonoBehaviour
     // Show updated text to the player
     private void UpdateText()
     {
-        UI_Text.text = currentOutputString;
+        uiElements.UI_Text.text = currentOutputString;
     }
 
     private void IterateSubstring()
     {
-        substringIndex++;
-        index = 0;
+        if (substringIndex < substrings.Length - 1)
+        { 
+            substringIndex++;
+            index = 0;
+        }
+        
+        else
+        {
+            Reset();
+            if (currentTextInputObject.nextTextEntry != null)
+            {
+                currentTextInputObject = currentTextInputObject.nextTextEntry;
+                ExtractString();
+                LoadSpeakerData();
+            }
+            else
+            {
+                Close();
+            }
+        }
 
         // Clear current text
         currentOutputString = "";
         UpdateText();
+
+        playing = true;
+
+        StartCoroutine(TimedPrint());
     }
 
     /// <summary>
@@ -132,10 +194,46 @@ public class TextController : MonoBehaviour
     /// </summary>
     private void Reset()
     {
-        currentTextInputObject = null;
         currentOutputString = "";
         index = 0;
         textInputString = "";
         substringIndex = 0;
+    }
+
+    /// <summary>
+    /// Closes the text boxes.
+    /// </summary>
+    private void Close()
+    {
+        HideTextBox();
+        HideFaceBox();
+        HideNameBox();
+    }
+
+    /// <summary>
+    /// Hides the text box UI elements.
+    /// </summary>
+    private void HideTextBox()
+    {
+        uiElements.UI_Border.enabled = false;
+        uiElements.UI_Box.enabled = false;
+        uiElements.UI_Text.enabled = false;
+    }
+
+    /// <summary>
+    /// Hides the text box UI elements.
+    /// </summary>
+    private void HideFaceBox()
+    {
+        uiElements.UIFace_Border.enabled = false;
+        uiElements.UIFace_Box.enabled = false;
+        uiElements.UIFace_Face.enabled = false;
+    }
+
+    private void HideNameBox()
+    {
+        uiElements.UIName_Border.enabled = false;
+        uiElements.UIName_Box.enabled = false;
+        uiElements.UIName_Text.enabled = false;
     }
 }

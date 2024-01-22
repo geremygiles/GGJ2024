@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a74b78a4b4abee419842293497340b8, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
+  speakerName: Sticky Fuck
+  face: {fileID: 21300000, guid: e7e91c5c9734b31469bbb30253fb95a1, type: 3}
   textString: "Here is a lot of text to fit into one box, but I'm sure we'll be able
     to do it somehow! We can probably have the text scroll up, or we could have the
     old text be deleted before the new text appears!  \n\nWhat a time to be alive,
     so many ways to fix such modern problems."
   charSpeed: 8
+  nextTextEntry: {fileID: 11400000, guid: bbc53ef6237951b43a76bcb8dc6be059, type: 2}
