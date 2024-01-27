@@ -73,6 +73,8 @@ public class KeyRecorder : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             recordingTime = 0f;
+            keys.Clear();
+            keyHitTimes.Clear();
         }
     }
 
@@ -83,6 +85,7 @@ public class KeyRecorder : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.S))
         {
+            // if the lists aren't the same size, don't save because something went wrong
             if(keys.Count != keyHitTimes.Count)
             {
                 Debug.LogWarning("Cannot Save: Key hit count does not match key hit time count in KeyRecorder.cs");
