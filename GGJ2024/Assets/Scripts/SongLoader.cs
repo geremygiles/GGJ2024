@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class SongLoader : MonoBehaviour
 {
+
+    [SerializeField, Tooltip("Whether to display the key ID or not")]
+    private bool showKeyID;
 
     [SerializeField, Tooltip("Prefabs for all paws, IN ORDER")]
     private GameObject[] pawPrefabs;
@@ -17,6 +21,7 @@ public class SongLoader : MonoBehaviour
     private bool songIsPlaying; // whether a song is currently playing or not
 
     // csv related fields for loading key number and time
+    private List<int> keyIDs = new List<int>();
     private List<int> keys = new List<int>();
     private List<float> keyHitTimes = new List<float>();
 
@@ -63,7 +68,14 @@ public class SongLoader : MonoBehaviour
             // if the note time has passed, spawn the note and remove it from the "queue"
             if (playTime >= keyHitTimes[0])
             {
-                Instantiate(pawPrefabs[keys[i] - 1], pawSpawnPositions[keys[i] - 1], Quaternion.identity);
+                GameObject _newKey = Instantiate(pawPrefabs[keys[i] - 1], pawSpawnPositions[keys[i] - 1], Quaternion.identity);
+
+                if(showKeyID)
+                {
+                    _newKey.GetComponentInChildren<TextMeshProUGUI>().text = keyIDs[i].ToString();
+                    keyIDs.RemoveAt(i);
+                }
+
                 keys.RemoveAt(i);
                 keyHitTimes.RemoveAt(i);
                 i--; // makes sure notes aren't skipped
@@ -96,8 +108,9 @@ public class SongLoader : MonoBehaviour
         for (int i = 0; i < _fileData.Length; i++)
         {
             string[] _line = _fileData[i].Split(",");
-            keys.Add(int.Parse(_line[0]));
-            keyHitTimes.Add(float.Parse(_line[1] + songDelayStartTime));
+            keyIDs.Add(int.Parse(_line[0]));
+            keys.Add(int.Parse(_line[1]));
+            keyHitTimes.Add(float.Parse(_line[2] + songDelayStartTime));
         }
 
         songIsPlaying = true;
