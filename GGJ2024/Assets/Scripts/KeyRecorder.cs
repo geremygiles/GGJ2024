@@ -97,7 +97,7 @@ public class KeyRecorder : MonoBehaviour
 
             for (int i = 0; i < keys.Count; i++)
             {
-                writer.WriteLine($"{keys[i]},{keyHitTimes[i]}");
+                writer.WriteLine($"{i + 1},{keys[i]},{keyHitTimes[i]}");
             }
 
             writer.Close();
