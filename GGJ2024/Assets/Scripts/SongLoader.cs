@@ -7,13 +7,37 @@ using UnityEngine;
 /// </summary>
 public class SongLoader : MonoBehaviour
 {
-    
+
+    [SerializeField, Tooltip("Prefabs for all paws, IN ORDER")]
+    private GameObject[] pawPrefabs;
+    [SerializeField, Tooltip("Spawn positions for all paws, IN ORDER")]
+    private Vector3[] pawSpawnPositions;
+
     private float playTime; // current playing time for the loaded song
     private bool songIsPlaying; // whether a song is currently playing or not
 
     // csv related fields for loading key number and time
-    [SerializeField] private List<int> keys = new List<int>();
-    [SerializeField] private List<float> keyHitTimes = new List<float>();
+    private List<int> keys = new List<int>();
+    private List<float> keyHitTimes = new List<float>();
+
+    private float songDelayStartTime = 0; // delay for the song to start, i.e. how long before notes spawn
+
+    /// <summary>
+    /// Sets the song delay
+    /// </summary>
+    /// <param name="delay">delay before notes spawn</param>
+    public void SetDelay(float delay)
+    {
+        songDelayStartTime = delay;
+    }
+
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    private void Start()
+    {
+        LoadSong("Song1"); // test line of code
+    }
 
     /// <summary>
     /// Update is called once per frame
@@ -22,12 +46,43 @@ public class SongLoader : MonoBehaviour
     {
         if (songIsPlaying)
         {
+
             playTime += Time.deltaTime;
+            SpawnNotes();
         }
     }
 
+    /// <summary>
+    /// Checks if notes can be spawned
+    /// </summary>
+    private void SpawnNotes()
+    {
+        // goes through each remaining note in the note list
+        for (int i = 0; i < keys.Count; i++)
+        {
+            // if the note time has passed, spawn the note and remove it from the "queue"
+            if (playTime >= keyHitTimes[0])
+            {
+                Instantiate(pawPrefabs[keys[i] - 1], pawSpawnPositions[keys[i] - 1], Quaternion.identity);
+                keys.RemoveAt(i);
+                keyHitTimes.RemoveAt(i);
+                i--; // makes sure notes aren't skipped
+            }
+            else
+            {
+                // else break from the for loop if the first note isn't ready to be played
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Loads a songs key input data
+    /// </summary>
+    /// <param name="songFileName">Name of the file to load</param>
     public void LoadSong(string songFileName)
     {
+        ResetSongData();
 
         string _filePath = "";
 #if UNITY_EDITOR
@@ -42,12 +97,18 @@ public class SongLoader : MonoBehaviour
         {
             string[] _line = _fileData[i].Split(",");
             keys.Add(int.Parse(_line[0]));
-            keyHitTimes.Add(float.Parse(_line[1]));
+            keyHitTimes.Add(float.Parse(_line[1] + songDelayStartTime));
         }
+
+        songIsPlaying = true;
+        songDelayStartTime = 0;
 
     }
 
-    private void ResetSong()
+    /// <summary>
+    /// Resets all song data
+    /// </summary>
+    private void ResetSongData()
     {
         playTime = 0;
         keys.Clear();
