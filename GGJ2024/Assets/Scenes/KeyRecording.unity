@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dd2650894c05241b15bd556a747dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: 
 --- !u!1 &379632577
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dd2650894c05241b15bd556a747dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Song1
 --- !u!4 &379632579
 Transform:
   m_ObjectHideFlags: 0

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /// <summary>
@@ -6,7 +8,14 @@ using UnityEngine;
 /// </summary>
 public class KeyRecorder : MonoBehaviour
 {
+    [SerializeField, Tooltip("Name of the file this recording will be saved to.")]
+    private string fileName;
+
     private float recordingTime; // current recording time since scene start or last reset
+
+    // csv related fields for saving key number and time
+    private List<int> keys = new List<int>();
+    private List<float> keyHitTimes = new List<float>();
 
     /// <summary>
     /// Update is called once per frame
@@ -40,7 +49,7 @@ public class KeyRecorder : MonoBehaviour
             Record(3);
         }
 
-        if(Input.GetKey(KeyCode.Alpha4))
+        if(Input.GetKeyDown(KeyCode.Alpha4))
         {
             Record(4);
         }
@@ -49,10 +58,11 @@ public class KeyRecorder : MonoBehaviour
     /// <summary>
     /// Records the key hit and time
     /// </summary>
-    /// <param name="inputNumber">Respective input for the key hit</param>
-    private void Record(int inputNumber)
+    /// <param name="keyHit">Respective input for the key hit</param>
+    private void Record(int keyHit)
     {
-
+        keys.Add(keyHit);
+        keyHitTimes.Add(recordingTime);
     }
 
     /// <summary>
@@ -60,7 +70,7 @@ public class KeyRecorder : MonoBehaviour
     /// </summary>
     private void CheckForReset()
     {
-        if(Input.GetKey(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
             recordingTime = 0f;
         }
@@ -71,6 +81,23 @@ public class KeyRecorder : MonoBehaviour
     /// </summary>
     private void CheckForSave()
     {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            if(keys.Count != keyHitTimes.Count)
+            {
+                Debug.LogWarning("Cannot Save: Key hit count does not match key hit time count in KeyRecorder.cs");
+                return;
+            }
 
+            string _saveFilePath = $"{Application.dataPath}/Music Input/{fileName}.csv";
+            StreamWriter writer = new StreamWriter(_saveFilePath);
+
+            for (int i = 0; i < keys.Count; i++)
+            {
+                writer.WriteLine($"{keys[i]},{keyHitTimes[i]}");
+            }
+
+            writer.Close();
+        }
     }
 }
