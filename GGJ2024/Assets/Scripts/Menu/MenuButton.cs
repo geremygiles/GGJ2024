@@ -11,8 +11,10 @@ public class MenuButton : MonoBehaviour
         menuController = GameObject.FindGameObjectWithTag("MenuController").GetComponent<MenuController>();
     }
 
-    public void ButtonClick()
+    public void ButtonClick(int index)
     {
-        menuController.ButtonClick();
+        Debug.Log("Supplying Index: " + index);
+        ButtonHandling.ReceiveIndexData(index);
+        //menuController.ButtonClick(index);
     }
 }

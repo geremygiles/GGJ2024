@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class PlayerMenuNavigation : MonoBehaviour
 
     private void OnConfirm()
     {
-        menuController.ButtonClick();
+        //Debug.Log("PlayerNum: " + playerNum);
+        ButtonHandling.ReceivePlayerData(playerNum);
     }
 }

@@ -277,11 +277,11 @@ MonoBehaviour:
       - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ButtonClick
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -420,14 +420,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349456265222246978}
+      - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ButtonClick
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -569,7 +569,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4948534964266051176}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ButtonClick
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -890,7 +890,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae46de09e1769324c8e58a6532d6f05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstButton: {fileID: 2359358787287569163}
+  buttons:
+  - {fileID: 359136450218152478}
+  - {fileID: 6551378580199186043}
+  - {fileID: 6559099083282395449}
+  - {fileID: 581612297989101473}
+  - {fileID: 5298240252108315219}
   shade: {fileID: 7875552655499138042}
 --- !u!1 &4536916598829816259
 GameObject:
@@ -1302,14 +1307,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 429437395622788418}
+      - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ButtonClick
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1662,14 +1667,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8126270405259627806}
+      - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
         m_MethodName: ButtonClick
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -29,6 +29,7 @@ public class MenuController : MonoBehaviour
     private bool player2JokesOpen = false;
 
     private List<Category> player1Categories = new List<Category>();
+    private List<Category> player2Categories = new List<Category>();
 
     // Start is called before the first frame update
     void Start()
@@ -51,17 +52,24 @@ public class MenuController : MonoBehaviour
         if (playerNum == 1)
         {
             // Player 1
-            AddCategories(player1Categories, 2);
 
-            for (int i = 0; i < player1Categories.Count; i++)
-            {
-                player1CatMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Categories[i].categoryName;
-            }
+            // Randomize Categories
+            player1Categories = SetRandCategories(5);
+            Debug.Log(player1Categories.Count);
 
+            // Show Menu
             player1CategoriesMenu = Instantiate(categoryMenuPrefab, player1MenuCanvas.transform, false);
 
             player1CatMenu = player1CategoriesMenu.GetComponent<CategoryMenu>();
 
+            // Show Data
+            for (int i = 0; i < player1Categories.Count; i++)
+            {
+                Debug.Log("Index: " + i);
+                player1CatMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Categories[i].categoryName;
+            }
+
+            // Set selected item to first
             player1EventSystem.SetSelectedGameObject(player1CatMenu.buttons[0].gameObject);
 
             player1CategoriesOpen = true;
@@ -70,6 +78,12 @@ public class MenuController : MonoBehaviour
         if (playerNum == 2)
         {
             // Player 2
+
+            // Randomize Categories
+            player2Categories = SetRandCategories(5);
+            Debug.Log(player1Categories.Count);
+
+            // Show Menu
             player2CategoriesMenu = Instantiate(categoryMenuPrefab, player2MenuCanvas.transform, false);
 
             player2CatMenu = player2CategoriesMenu.GetComponent<CategoryMenu>();
@@ -82,6 +96,13 @@ public class MenuController : MonoBehaviour
 
             rectTransform.anchoredPosition = new Vector2(-50, -50);
 
+            // Show Data
+            for (int i = 0; i < player2Categories.Count; i++)
+            {
+                player2CatMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Categories[i].categoryName;
+            }
+
+            // Set selected item to first
             player2EventSystem.SetSelectedGameObject(player2CatMenu.buttons[0].gameObject);
 
             player2CategoriesOpen = true;
@@ -90,7 +111,7 @@ public class MenuController : MonoBehaviour
 
     }
 
-    private void OpenJokeMenu(int playerNum)
+    private void OpenJokeMenu(int playerNum, int index)
     {
         // Player 1
         if (playerNum == 1 && !player1JokesOpen) {
@@ -122,9 +143,9 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void ButtonClick()
+    public void ButtonClick(int playerNum, int index)
     {
-        OpenJokeMenu(1);
+        //OpenJokeMenu(playerNum, index);
     }
 
     private void CloseJokes(int playerNum)
@@ -174,7 +195,7 @@ public class MenuController : MonoBehaviour
             }
             else if (player1CategoriesOpen)
             {
-                CloseCategories(1);
+              //  CloseCategories(1);
             }
         }
 
@@ -186,14 +207,14 @@ public class MenuController : MonoBehaviour
             }
             else if (player2CategoriesOpen)
             {
-                CloseCategories(2);
+               // CloseCategories(2);
             }
         }
     }
 
-    private void AddCategories(List<Category> categoryList, int categoryCount)
+    private List<Category> SetRandCategories(int categoryCount)
     {
-        categoryList = GetComponent<CategoryRandomizer>().GenerateCategories(categoryCount);
+        return GetComponent<CategoryRandomizer>().GenerateCategories(categoryCount);
 
     }
 }

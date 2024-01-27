@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7854c441d29b2b14ba717155acf392e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCategories: []
   player1MenuCanvas: {fileID: 591709157}
   player2MenuCanvas: {fileID: 1156210093}
   categoryMenuPrefab: {fileID: 4480104730032732817, guid: 567e4dd03cf19a743af2de6c7d271378, type: 3}
@@ -189,6 +188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allCategories:
   - {fileID: 11400000, guid: e000a8da7abe6d64cbd90a54be846bee, type: 2}
+  - {fileID: 11400000, guid: 96b65eeae04d8074384f021d9530c35d, type: 2}
+  - {fileID: 11400000, guid: f11fe91f7723f9d4cb342ff3c86008f6, type: 2}
+  - {fileID: 11400000, guid: c5ee4e99aed0da645bb64c6275944e8d, type: 2}
+  - {fileID: 11400000, guid: a7b3e3c49d3804b4581b460a8e40702f, type: 2}
+  - {fileID: 11400000, guid: 01ebe36db732002498c2bb605e0700d6, type: 2}
 --- !u!1 &563180170
 GameObject:
   m_ObjectHideFlags: 0
