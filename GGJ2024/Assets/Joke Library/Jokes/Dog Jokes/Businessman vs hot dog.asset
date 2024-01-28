@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Businessman vs Hot Dog
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Businessman vs Hot Dog
   textString: "What\u2019s the difference between a businessman and a hot dog?\n\nThe
     businessman wears a suit but the dog just pants."
   charSpeed: 2

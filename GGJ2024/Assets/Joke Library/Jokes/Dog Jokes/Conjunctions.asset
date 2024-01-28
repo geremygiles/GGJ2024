@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Conjunctions
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Conjunctions
   textString: "Why do dogs love conjunctions? \n\nThey just love buts!"
   charSpeed: 2

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Joke about Fur
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Joke about Fur
   textString: "I was gonna joke about a sphynx cat's fur. \n\nBut then I remembered
     there was nothing to joke about!"
   charSpeed: 2

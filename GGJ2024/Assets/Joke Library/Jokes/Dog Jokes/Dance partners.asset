@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dance Partners
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Dance Partners
   textString: 'Why do dogs make terrible dance partners?
 
 

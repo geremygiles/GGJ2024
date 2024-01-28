@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Motto
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Motto
   textString: 'What is an orange cat''s motto?
 
 

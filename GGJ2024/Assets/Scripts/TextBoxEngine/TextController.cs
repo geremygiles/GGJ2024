@@ -84,12 +84,9 @@ public class TextController : MonoBehaviour
     /// <param name="speaker"></param>
     public void Enqueue(Text text, Speaker speaker)
     {
-        Text tempObject = ScriptableObject.CreateInstance("Text") as Text;
-        tempObject.speaker = speaker;
-        tempObject.textString = text.textString;
-        tempObject.charSpeed = text.charSpeed;
+        text.speaker = speaker;
 
-        Enqueue(tempObject);
+        Enqueue(text);
     }
     
     /// <summary>
