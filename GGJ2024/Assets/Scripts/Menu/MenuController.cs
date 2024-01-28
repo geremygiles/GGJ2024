@@ -87,7 +87,6 @@ public class MenuController : MonoBehaviour
 
             // Randomize Categories
             player1Categories = SetRandCategories(5);
-            Debug.Log(player1Categories.Count);
 
             // Show Menu
             player1CategoriesObject = Instantiate(categoryMenuPrefab, player1MenuCanvas.transform, false);
@@ -115,7 +114,6 @@ public class MenuController : MonoBehaviour
 
             // Randomize Categories
             player2Categories = SetRandCategories(5);
-            Debug.Log(player1Categories.Count);
 
             // Show Menu
             player2CategoriesObject = Instantiate(categoryMenuPrefab, player2MenuCanvas.transform, false);

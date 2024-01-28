@@ -59,7 +59,6 @@ public static class ButtonHandling
 
     private static void SendData()
     {
-        Debug.Log("Data Sending: Player = " + playerNumber + ", Index = " + categoryIndexNumber);
         // Send to MenuController
         Singleton.Instance.MenuController.ButtonClick(playerNumber, categoryIndexNumber);
 
