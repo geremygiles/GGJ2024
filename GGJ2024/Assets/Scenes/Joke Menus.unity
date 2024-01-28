@@ -385,50 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shade: {fileID: 1338738221}
---- !u!1 &676075601
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 676075603}
-  - component: {fileID: 676075602}
-  m_Layer: 0
-  m_Name: Player Action Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &676075602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676075601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701ab99edd177f43b71427102a3a0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &676075603
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676075601}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711514142
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,13 +436,13 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_PointAction: {fileID: 2617961351812517054, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
-  m_MoveAction: {fileID: -792374199047608295, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
+  m_MoveAction: {fileID: 3210104969863899202, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_SubmitAction: {fileID: 2641101351474424675, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_CancelAction: {fileID: -5354426164499616966, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_LeftClickAction: {fileID: 531444442783257029, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_MiddleClickAction: {fileID: -546692187686067316, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_RightClickAction: {fileID: -7248348328628073155, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
-  m_ScrollWheelAction: {fileID: 653525349928383744, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
+  m_ScrollWheelAction: {fileID: 0}
   m_TrackedDevicePositionAction: {fileID: -7452583705667279962, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1890616923966443305, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_DeselectOnBackgroundClick: 1
@@ -1005,7 +961,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_PointAction: {fileID: 2617961351812517054, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
-  m_MoveAction: {fileID: -792374199047608295, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
+  m_MoveAction: {fileID: 3210104969863899202, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_SubmitAction: {fileID: 2641101351474424675, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_CancelAction: {fileID: -5354426164499616966, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
   m_LeftClickAction: {fileID: 531444442783257029, guid: 39a23c298d8dac14bbc8af4ad0ad59f6, type: 3}
@@ -1256,4 +1212,3 @@ SceneRoots:
   - {fileID: 127196525}
   - {fileID: 763302770}
   - {fileID: 969458525}
-  - {fileID: 676075603}
