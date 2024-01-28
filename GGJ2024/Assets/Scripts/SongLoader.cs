@@ -45,7 +45,7 @@ public class SongLoader : MonoBehaviour
     /// <summary>
     /// Loads a songs key input data
     /// </summary>
-    /// <param name=\"songFileName">Name of the file to load</param>
+    /// <param name="songFileName">Name of the file to load</param>
     public void LoadSong(string songFileName)
     {
         ResetSongData();

@@ -35,8 +35,14 @@ public class RhythmGame : MonoBehaviour
         maxTiles = loader.getKeys().Count;
     }
 
+    private void Update()
+    {
+        Debug.Log("UPDATE");
+    }
+
     private void FixedUpdate()
     {
+        Debug.Log("FIXED UPDATE");
         // Enabling the game:
         if(loader.getSongStatus() && this.enabled)
         {
@@ -47,7 +53,7 @@ public class RhythmGame : MonoBehaviour
         if(goneTiles == maxTiles)
         {
             Reset();
-            this.enabled = false;
+            //this.enabled = false;
         }
     }
 
@@ -71,6 +77,7 @@ public class RhythmGame : MonoBehaviour
             // if the note time has passed, spawn the note and remove it from the "queue"
             if (loader.getPlayTime() >= loader.getKeyTimes()[0])
             {
+                Debug.Log("Spawn");
                 GameObject Paw = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.identity);
 
                 loader.getKeys().RemoveAt(i);
@@ -79,6 +86,9 @@ public class RhythmGame : MonoBehaviour
             }
             else
             {
+                Debug.Log("breaking");
+                Debug.Log(loader.getPlayTime());
+                Debug.Log(loader.getKeyTimes()[0]);
                 // else break from the for loop if the first note isn't ready to be played
                 break;
             }
