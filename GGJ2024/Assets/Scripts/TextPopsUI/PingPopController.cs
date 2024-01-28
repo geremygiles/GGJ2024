@@ -33,7 +33,6 @@ public class PingPopController : MonoBehaviour
     {
         if (canMove) 
         {
-            Debug.Log(myMoveDir);
             transform.position = Vector3.MoveTowards(transform.position, transform.position + myMoveDir, moveAmnt * (moveSpeed * Time.deltaTime));
         }
     }

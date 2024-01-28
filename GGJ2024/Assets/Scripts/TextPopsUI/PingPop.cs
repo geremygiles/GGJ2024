@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class PingPop : MonoBehaviour
 {
     [SerializeField] 
-    private GameObject PlayerObject;
+    private GameObject[] talkativeCats;
 
     [SerializeField] 
     private GameObject popUpTextPrefab;
@@ -18,7 +18,7 @@ public class PingPop : MonoBehaviour
     [SerializeField] 
     private float textKillTime;
 
-    [Range(0f, 2f)]
+    [Range(0f, 3f)]
     [SerializeField]
     private int performance = 0;
 
@@ -31,7 +31,7 @@ public class PingPop : MonoBehaviour
 
     public void HitNow(int skill)
     {
-        GameObject newPopUp = Instantiate(popUpTextPrefab, PlayerObject.transform.position, Quaternion.identity);
+        GameObject newPopUp = Instantiate(popUpTextPrefab, talkativeCats[Random.Range(0, talkativeCats.Length)].transform.position, Quaternion.identity);
         newPopUp.SetActive(true);
 
         Color textColor;
@@ -39,19 +39,19 @@ public class PingPop : MonoBehaviour
         int playerScore = 0;
 
         switch(skill) {
-            case 0: // Bad case:
+            case 1: // Bad case:
                 textColor = textColors[0];
                 words[0] = "Boo!"; words[1] = "You suck!"; words[2] = "Dat Dawg!";
                 playerScore = 0;
             break;
 
-            case 1: // Meh case:
+            case 2: // Meh case:
                 textColor = textColors[1];
                 words[0] = "*chuckle*"; words[1] = "Oh brother!"; words[2] = "pfft";
                 playerScore = 50;
             break;
 
-            case 2: // Good case:
+            case 3: // Good case:
                 textColor = textColors[2];
                 words[0] = "Great!"; words[1] = "Ha Ha!"; words[2] = "LMAO!";
                 playerScore = 100;
