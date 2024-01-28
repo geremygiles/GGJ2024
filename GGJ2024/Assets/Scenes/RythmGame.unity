@@ -267,6 +267,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PawButton3
       objectReference: {fileID: 0}
+    - target: {fileID: 2722737043453724742, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607916510881042619, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: key
+      value: 51
+      objectReference: {fileID: 0}
     - target: {fileID: 5652971846196311041, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -284,7 +292,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8498626119117951213, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
@@ -344,7 +353,7 @@ GameObject:
   - component: {fileID: 379632580}
   - component: {fileID: 379632581}
   m_Layer: 0
-  m_Name: ScriptManager
+  m_Name: SceneGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,6 +547,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PawButton4
       objectReference: {fileID: 0}
+    - target: {fileID: 2722737043453724742, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607916510881042619, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: key
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 5652971846196311041, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -551,7 +568,8 @@ PrefabInstance:
       value: pb_Hitbox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8498626119117951213, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
@@ -690,6 +708,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PawButton2
       objectReference: {fileID: 0}
+    - target: {fileID: 2722737043453724742, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607916510881042619, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: key
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5237708410476188305, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_Camera
       value: 
@@ -707,7 +733,8 @@ PrefabInstance:
       value: pb_Hitbox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8498626119117951213, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
@@ -825,9 +852,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PawButton1
       objectReference: {fileID: 0}
+    - target: {fileID: 2722737043453724742, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2777582371758462632, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607916510881042619, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: key
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 5237708410476188305, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_Camera
@@ -849,6 +884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pb_Image_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8370884597236552396, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8498626119117951213, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
       propertyPath: m_Name
       value: pb_Hitbox
@@ -859,7 +898,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5618546638925314247, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8498626119117951213, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ce816aa1d8a434382c21b480ffcd89, type: 3}
