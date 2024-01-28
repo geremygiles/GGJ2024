@@ -276,7 +276,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: CategoryButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,7 +422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: CategoryButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4948534964266051176}
+      - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: CategoryButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1309,7 +1309,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: CategoryButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1669,7 +1669,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7475848368853902045}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: CategoryButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

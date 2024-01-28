@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
   m_Name: Test Joke 2
   m_EditorClassIdentifier: 
+  title: Test Title 2
   joke: 'This one is even better than the last!~
 
 '

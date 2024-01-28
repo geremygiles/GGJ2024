@@ -5,25 +5,51 @@ using UnityEngine;
 public static class ButtonHandling
 {
     private static int playerNumber = -1;
-    private static int indexNumber = -1;
+    private static int categoryIndexNumber = -1;
+    private static int jokeIndexNumber = -1;
 
     private static bool playerNumRecieved = false;
-    private static bool indexNumRecieved = false;
+    private static bool categoryIndexNumRecieved = false;
+    private static bool jokeNumRecieved = false;
+    private static bool confirmed = false;
 
    public static void ReceivePlayerData(int playerNum)
     {
         playerNumber = playerNum;
         playerNumRecieved = true;
 
-        if (indexNumRecieved)
+        if (categoryIndexNumRecieved)
         {
             SendData();
+        }
+
+        if (jokeNumRecieved)
+        {
+            Singleton.Instance.MenuController.StoreJokeObject(playerNumber, jokeIndexNumber);
+
+            // Clear Data
+            jokeIndexNumber = -1;
+            playerNumber = -1;
+
+            playerNumRecieved = false;
+            jokeNumRecieved = false;
+        }
+
+        if (confirmed)
+        {
+            Singleton.Instance.MenuController.Confirm(playerNum);
+
+            // Clear Data
+            playerNumber = -1;
+
+            playerNumRecieved = false;
+            confirmed = false;
         }
     }
 
     public static void ReceiveIndexData(int indexNum) {
-        indexNumber = indexNum;
-        indexNumRecieved = true;
+        categoryIndexNumber = indexNum;
+        categoryIndexNumRecieved = true;
 
         if (playerNumRecieved)
         {
@@ -33,15 +59,64 @@ public static class ButtonHandling
 
     private static void SendData()
     {
-        Debug.Log("Data Sending: Player = " + playerNumber + ", Index = " + indexNumber);
+        Debug.Log("Data Sending: Player = " + playerNumber + ", Index = " + categoryIndexNumber);
         // Send to MenuController
-        Singleton.Instance.MenuController.ButtonClick(playerNumber, indexNumber);
+        Singleton.Instance.MenuController.ButtonClick(playerNumber, categoryIndexNumber);
 
         // Clear Data
         playerNumber = -1;
-        indexNumber = -1;
+        categoryIndexNumber = -1;
 
         playerNumRecieved = false;
-        indexNumRecieved = false;
-}
+        categoryIndexNumRecieved = false;
+    }
+
+    public static void ReceiveJokeData(int index)
+    {
+        jokeIndexNumber = index;
+        jokeNumRecieved = true;
+
+        if (playerNumRecieved)
+        {
+            Singleton.Instance.MenuController.StoreJokeObject(playerNumber, jokeIndexNumber);
+
+            // Clear Data
+            jokeIndexNumber = -1;
+            playerNumber = -1;
+
+            playerNumRecieved = false;
+            jokeNumRecieved = false;
+        }
+    }
+
+    public static void Confirm()
+    {
+        confirmed = true; 
+
+        if (playerNumRecieved)
+        {
+            Singleton.Instance.MenuController.Confirm(playerNumber);
+
+            // Clear Data
+            playerNumber = -1;
+
+            playerNumRecieved = false;
+            confirmed = false;
+        }
+    }
+
+    public static void Cancel()
+    {
+        if (playerNumRecieved)
+        {
+            Singleton.Instance.MenuController.Back(playerNumber);
+
+            // Clear Data
+            playerNumber = -1;
+
+            playerNumRecieved = false;
+        }
+
+        
+    }
 }

@@ -14,7 +14,7 @@ public class CategoryRandomizer : MonoBehaviour
 
         while (categories.Count < categoryCount)
         {
-            var randomInt = Random.Range(0, tempAllCategories.Count - 1);
+            var randomInt = Random.Range(0, tempAllCategories.Count);
 
             var category = tempAllCategories[randomInt];
             tempAllCategories.Remove(category);

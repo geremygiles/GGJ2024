@@ -49,6 +49,7 @@ MonoBehaviour:
   player2MenuCanvas: {fileID: 0}
   categoryMenuPrefab: {fileID: 4480104730032732817, guid: 567e4dd03cf19a743af2de6c7d271378, type: 3}
   jokeMenuPrefab: {fileID: 1944033040002753896, guid: e0b9fb56ba232754d96327ba6714d105, type: 3}
+  confirmPromptPrefab: {fileID: 7915181762122270430, guid: ff6c6814a6987e447960c1184fcbd7e3, type: 3}
   player1EventSystem: {fileID: 0}
   player2EventSystem: {fileID: 0}
 --- !u!114 &6905630457336855982

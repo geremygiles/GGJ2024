@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Fat Cat
+  m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
+  m_Name: Dog Jokes
   m_EditorClassIdentifier: 
-  title: Fat Cats, Amirite?
-  joke: Them cats be fat, amirite?!
+  categoryName: Dog Jokes
+  jokes:
+  - {fileID: 11400000, guid: 2eaacfb24d3c3c04f9752697f4db5e21, type: 2}

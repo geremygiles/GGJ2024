@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MenuButton : MonoBehaviour
@@ -9,8 +10,23 @@ public class MenuButton : MonoBehaviour
 
     }
 
-    public void ButtonClick(int index)
+    public void JokeButtonClick(int index)
+    {
+        ButtonHandling.ReceiveJokeData(index);
+    }
+
+    public void CategoryButtonClick(int index)
     {
         ButtonHandling.ReceiveIndexData(index);
+    }
+
+    public void ConfirmButtonClick()
+    {
+        ButtonHandling.Confirm();
+    }
+
+    public void CancelButtonClick()
+    {
+        ButtonHandling.Cancel();
     }
 }
