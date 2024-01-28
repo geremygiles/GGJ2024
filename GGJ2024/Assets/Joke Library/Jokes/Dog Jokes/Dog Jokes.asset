@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
+  m_Name: Dog Jokes
+  m_EditorClassIdentifier: 
+  categoryName: Dog Jokes
+  jokes:
+  - {fileID: 11400000, guid: 2eaacfb24d3c3c04f9752697f4db5e21, type: 2}
+  - {fileID: 11400000, guid: 2906d78949827c0428083b6390cba527, type: 2}
+  - {fileID: 11400000, guid: 7d1d65c736d977b4fa6f8ff21b5c6cef, type: 2}

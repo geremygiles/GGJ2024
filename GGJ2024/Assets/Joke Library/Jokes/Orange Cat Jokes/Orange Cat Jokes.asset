@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
+  m_Name: Orange Cat Jokes
+  m_EditorClassIdentifier: 
+  categoryName: Fat Cat Jokes
+  jokes:
+  - {fileID: 11400000, guid: 5df4944980a3f1c49b05515bd261f121, type: 2}
+  - {fileID: 11400000, guid: e8b65409c42c2df4f8d0411a03d1cd9d, type: 2}
+  - {fileID: 11400000, guid: 26615e97d169a104fb31659384abe3cf, type: 2}

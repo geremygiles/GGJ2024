@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
+  m_Name: Hairless Cat Jokes
+  m_EditorClassIdentifier: 
+  categoryName: Dog Jokes
+  jokes:
+  - {fileID: 11400000, guid: b4cbc3c2b82afea49ad008631fb240f7, type: 2}
+  - {fileID: 11400000, guid: c6676289da860074eaa2a9f76c9b21f2, type: 2}
+  - {fileID: 11400000, guid: 77679787b49c3174eaac9d8ef98c043f, type: 2}
