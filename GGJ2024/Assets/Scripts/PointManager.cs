@@ -9,7 +9,7 @@ public static class PointManager
     private const int MaximumPossiblePoints = BaseStartingPoints * 2;
 
     // Vars for keeping track of how many points a player has total over all rounds
-    private static float player1TotalPoints = 2000;
+    private static float player1TotalPoints = BaseStartingPoints;
     private static float player2TotalPoints = BaseStartingPoints;
 
     // Vars for calculating how many points a player earns per round
