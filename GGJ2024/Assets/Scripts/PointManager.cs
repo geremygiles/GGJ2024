@@ -141,11 +141,11 @@ public static class PointManager
 
         if (player1TotalPoints >= MaximumPossiblePoints)
         {
-            Singleton.Instance.GameManager.PlayerWins(1);
+            //Singleton.Instance.GameManager.PlayerWins(1);
         }
         else if (player2TotalPoints >= MaximumPossiblePoints)
         {
-            Singleton.Instance.GameManager.PlayerWins(2);
+            //Singleton.Instance.GameManager.PlayerWins(2);
         }
     }
 
