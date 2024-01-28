@@ -35,7 +35,7 @@ public static class ButtonHandling
     {
         Debug.Log("Data Sending: Player = " + playerNumber + ", Index = " + indexNumber);
         // Send to MenuController
-        GameObject.FindGameObjectWithTag("MenuController").GetComponent<MenuController>().ButtonClick(playerNumber, indexNumber);
+        Singleton.Instance.MenuController.ButtonClick(playerNumber, indexNumber);
 
         // Clear Data
         playerNumber = -1;

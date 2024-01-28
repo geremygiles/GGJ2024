@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMenuNavigation : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private int playerNum;
-    MenuController menuController;
     PlayerInput playerInput;
     int activeActionMap = 0;
     private void Awake()
     {
-        menuController = GameObject.FindGameObjectWithTag("MenuController").GetComponent<MenuController>();
+        //menuController = GameObject.FindGameObjectWithTag("MenuController").GetComponent<MenuController>();
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -30,17 +29,21 @@ public class PlayerMenuNavigation : MonoBehaviour
 
     private void OnBack()
     {
-        menuController.Back(playerNum);
+        Singleton.Instance.MenuController.Back(playerNum);
     }
 
-    private void OnConfirm()
+    private void OnSubmit()
     {
-        //Debug.Log("PlayerNum: " + playerNum);
         ButtonHandling.ReceivePlayerData(playerNum);
     }
 
     private void OnHeckle()
     {
         Debug.Log("Heckle!");
+    }
+
+    private void OnStartMenu()
+    {
+        Singleton.Instance.GameManager.StartJokeSelectionPhase();
     }
 }

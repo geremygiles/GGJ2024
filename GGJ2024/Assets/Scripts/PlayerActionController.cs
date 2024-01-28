@@ -10,6 +10,6 @@ public static class PlayerActionController
     /// <param name="newActionMapIndex">0 = Rhythm, 1 = Menu</param>
     public static void ChangePlayerState(int playerNum, int newActionMapIndex)
     {
-        GameObject.Find("Player " + playerNum).GetComponent<PlayerMenuNavigation>().ChangePlayerState(newActionMapIndex);
+        GameObject.Find("Player " + playerNum).GetComponent<PlayerControls>().ChangePlayerState(newActionMapIndex);
     }
 }
