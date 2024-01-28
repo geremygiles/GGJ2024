@@ -19,6 +19,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private MultiplayerEventSystem player1EventSystem;
     [SerializeField] private MultiplayerEventSystem player2EventSystem;
 
+    [SerializeField] private Speaker player1Speaker;
+    [SerializeField] private Speaker player2Speaker;
+
     private GameObject player1CategoriesObject;
     private CategoryMenu player1CategoryMenu;
     private GameObject player2CategoriesObject;
@@ -69,6 +72,27 @@ public class MenuController : MonoBehaviour
         OpenCategoryMenu(2);
         OpenShade();
     }
+
+    private void OnDisable()
+    {
+    player1CategoriesOpen = false;
+    player2CategoriesOpen = false;
+    player1JokesOpen = false;
+    player2JokesOpen = false;
+    player1ConfirmOpen = false;
+    player2ConfirmOpen = false;
+    player1Ready = false;
+    player2Ready = false;
+
+
+    player1Categories = new List<Category>();
+    player2Categories = new List<Category>();
+
+    player1CurrentCatIndex = 0;
+    player1CurrentJokeIndex = 0;
+    player2CurrentCatIndex = 0;
+    player2CurrentJokeIndex = 0;
+}
 
     // Update is called once per frame
     void Update()
@@ -164,7 +188,7 @@ public class MenuController : MonoBehaviour
 
             for (int i = 0; i < player1Jokes.Length; i++)
             {
-                player1JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Jokes[i].title;
+                player1JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Jokes[i].name;
             }
 
             // Show Data
@@ -189,7 +213,7 @@ public class MenuController : MonoBehaviour
 
             for (int i = 0; i < player2Jokes.Length; i++)
             {
-                player2JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Jokes[i].title;
+                player2JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Jokes[i].name;
             }
 
             // Moving menu
@@ -334,7 +358,7 @@ public class MenuController : MonoBehaviour
             player1ConfirmMenu = player1ConfirmObject.GetComponent<CategoryMenu>();
 
             // Show Joke Data
-            player1ConfirmMenu.promptText.text = player1SelectedJoke.joke;
+            player1ConfirmMenu.promptText.text = player1SelectedJoke.textString;
 
             // Set selected item to cancel
             player1EventSystem.SetSelectedGameObject(player1ConfirmMenu.buttons[1].gameObject);
@@ -351,7 +375,7 @@ public class MenuController : MonoBehaviour
             player2ConfirmMenu = player2ConfirmObject.GetComponent<CategoryMenu>();
 
             // Show Joke Data
-            player2ConfirmMenu.promptText.text = player2SelectedJoke.joke;
+            player2ConfirmMenu.promptText.text = player2SelectedJoke.textString;
 
             // Set selected item to cancel
             player2EventSystem.SetSelectedGameObject(player2ConfirmMenu.buttons[1].gameObject);
@@ -398,6 +422,9 @@ public class MenuController : MonoBehaviour
 
             // Set new controls
             PlayerActionController.ChangePlayerState(1, 0);
+
+            // Add to text output queue
+            Singleton.Instance.TextController.Enqueue(player1SelectedJoke, player1Speaker);
         }
         if (playerNum == 2)
         {
@@ -405,6 +432,9 @@ public class MenuController : MonoBehaviour
 
             // Set new controls
             PlayerActionController.ChangePlayerState(2, 0);
+
+            // Add to text output queue
+            Singleton.Instance.TextController.Enqueue(player2SelectedJoke, player2Speaker);
         }
 
         CloseConfirm(playerNum);
@@ -416,6 +446,9 @@ public class MenuController : MonoBehaviour
         if (player1Ready && player2Ready)
         {
             Debug.Log("Rhythm Time!");
+
+            Singleton.Instance.TextController.ContinueText();
+            this.enabled = false;
         }
     }
 }
