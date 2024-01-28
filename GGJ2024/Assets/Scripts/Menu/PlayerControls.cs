@@ -46,4 +46,9 @@ public class PlayerControls : MonoBehaviour
     {
         Singleton.Instance.GameManager.StartJokeSelectionPhase();
     }
+
+    private void OnProceed()
+    {
+        Singleton.Instance.TextController.ContinueText();
+    }
 }

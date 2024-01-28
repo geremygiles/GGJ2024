@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
   m_Name: Human Jokes
   m_EditorClassIdentifier: 
-  categoryName: Fat Cat Jokes
+  categoryName: Human Jokes
   jokes:
   - {fileID: 11400000, guid: 89cf7593663c250428620471e2ff746d, type: 2}
   - {fileID: 11400000, guid: aada66fb78110c747826dcf0858ce190, type: 2}
-  - {fileID: 11400000, guid: 3c5732cc313a6ab4c8836660cff9797f, type: 2}
   - {fileID: 11400000, guid: 3c5732cc313a6ab4c8836660cff9797f, type: 2}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +26,7 @@ public class UIElements
 
 public class TextController : MonoBehaviour
 {
+    [SerializeField] List<Text> textQueue = new List<Text>();
     [SerializeField] Text currentTextInputObject;
     private string currentOutputString;
     private int index = 0;
@@ -33,43 +35,76 @@ public class TextController : MonoBehaviour
     private int substringIndex;
     private float addtYield = 0;
 
+    private bool open = false;
+
     [SerializeField] private float addtYieldValue = 0.5f;
 
-    [SerializeField] private bool playing = true;
+    [SerializeField] private bool playing = false;
 
     [SerializeField] UIElements uiElements;
 
-
-    // Start is called before the first frame update
-    void OnEnable()
+    /// <summary>
+    /// Called by other classes to proceed the text
+    /// </summary>
+    public void ContinueText()
     {
-        ExtractString();
-        LoadSpeakerData();
-        StartCoroutine(TimedPrint());
-    }
-
-    private void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!playing)
         {
-            if (!playing) {
-                IterateSubstring();
-            }
-            
-            else
-            {
-                playing = false;
-                currentOutputString = substrings[substringIndex];
-                UpdateText();
-            }
+            IterateSubstring();
+        }
+
+        else
+        {
+            playing = false;
+            currentOutputString = substrings[substringIndex];
+            UpdateText();
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    /// <summary>
+    /// Called by other classes to add a Text item
+    /// </summary>
+    /// <param name="text"></param>
+    public void Enqueue(Text text)
     {
-        
+        textQueue.Add(text);
+        Debug.Log(textQueue.Count);
+    }
+
+    /// <summary>
+    /// Called by other classes to add a Text item with a speaker
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="speaker"></param>
+    public void Enqueue(Text text, Speaker speaker)
+    {
+        text.speaker = speaker;
+
+        Enqueue(text);
+    }
+    
+    /// <summary>
+    /// Called interally to proceed
+    /// </summary>
+    private void PlayNext()
+    {
+        Reset();
+
+        if (!open) Open();
+
+        // Grab text object
+        currentTextInputObject = textQueue[0];
+
+        // Remove from queue
+        textQueue.RemoveAt(0);
+
+        Debug.Log("removed object, current count: " + textQueue.Count);
+
+        ExtractString();
+        LoadSpeakerData();
+        playing = true;
+
+        StartCoroutine(TimedPrint());
     }
 
     /// <summary>
@@ -90,14 +125,16 @@ public class TextController : MonoBehaviour
 
     private void LoadSpeakerData()
     {
-        if (!(currentTextInputObject.speakerName == ""))
+        if (currentTextInputObject.speaker == null) return;
+
+        if (!(currentTextInputObject.speaker.speakerName == ""))
         {
-            uiElements.UIName_Text.text = currentTextInputObject.speakerName;
+            uiElements.UIName_Text.text = currentTextInputObject.speaker.speakerName;
         }
         
-        if (!(currentTextInputObject.face == null))
+        if (!(currentTextInputObject.speaker.face == null))
         {
-            uiElements.UIFace_Face.sprite = currentTextInputObject.face;
+            uiElements.UIFace_Face.sprite = currentTextInputObject.speaker.face;
         }
         
     }
@@ -159,6 +196,7 @@ public class TextController : MonoBehaviour
 
     private void IterateSubstring()
     {
+        // Not at end of substrings
         if (substringIndex < substrings.Length - 1)
         { 
             substringIndex++;
@@ -168,11 +206,11 @@ public class TextController : MonoBehaviour
         else
         {
             Reset();
-            if (currentTextInputObject.nextTextEntry != null)
+
+            // Items in the queue
+            if (textQueue.Count > 0)
             {
-                currentTextInputObject = currentTextInputObject.nextTextEntry;
-                ExtractString();
-                LoadSpeakerData();
+                PlayNext();
             }
             else
             {
@@ -208,6 +246,8 @@ public class TextController : MonoBehaviour
         HideTextBox();
         HideFaceBox();
         HideNameBox();
+
+        open = false;
     }
 
     /// <summary>
@@ -235,5 +275,44 @@ public class TextController : MonoBehaviour
         uiElements.UIName_Border.enabled = false;
         uiElements.UIName_Box.enabled = false;
         uiElements.UIName_Text.enabled = false;
+    }
+
+    /// <summary>
+    /// Opens the text boxes.
+    /// </summary>
+    private void Open()
+    {
+        ShowTextBox();
+        ShowFaceBox();
+        ShowNameBox();
+
+        open = true;
+    }
+
+    /// <summary>
+    /// Hides the text box UI elements.
+    /// </summary>
+    private void ShowTextBox()
+    {
+        uiElements.UI_Border.enabled = true;
+        uiElements.UI_Box.enabled = true;
+        uiElements.UI_Text.enabled = true;
+    }
+
+    /// <summary>
+    /// Hides the text box UI elements.
+    /// </summary>
+    private void ShowFaceBox()
+    {
+        uiElements.UIFace_Border.enabled = true;
+        uiElements.UIFace_Box.enabled = true;
+        uiElements.UIFace_Face.enabled = true;
+    }
+
+    private void ShowNameBox()
+    {
+        uiElements.UIName_Border.enabled = true;
+        uiElements.UIName_Box.enabled = true;
+        uiElements.UIName_Text.enabled = true;
     }
 }

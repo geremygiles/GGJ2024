@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
   m_Name: Bananas and monkeys
   m_EditorClassIdentifier: 
-  title: Bananas and monkeys
-  joke: "Today I heard that human's eat more bananas than monkeys. \n\nI cant remember
-    the last time I saw them eat a monkey!"
+  speaker: {fileID: 0}
+  textString: Bananas and monkes hehe
+  charSpeed: 2

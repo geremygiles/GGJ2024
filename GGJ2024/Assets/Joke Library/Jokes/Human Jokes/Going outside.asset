@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
   m_Name: Going outside
   m_EditorClassIdentifier: 
-  title: Going outside
-  joke: "Humans can go outside no issues. \n\nBut when I wanna go outside, it suddenly
-    becomes a problem!"
+  speaker: {fileID: 0}
+  textString: I be going outside and shit on God
+  charSpeed: 2

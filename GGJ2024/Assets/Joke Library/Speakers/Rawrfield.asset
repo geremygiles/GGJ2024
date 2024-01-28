@@ -9,16 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Bringing them food
+  m_Script: {fileID: 11500000, guid: e26120c1aada997428804f60ec4824fb, type: 3}
+  m_Name: Rawrfield
   m_EditorClassIdentifier: 
-  speaker: {fileID: 0}
-  textString: 'You gonna bring them food :3
-
-
-    They be bringing it too!
-
-
-    It''s
-    so sweet :D'
-  charSpeed: 2
+  speakerName: Rawrfield
+  face: {fileID: 21300000, guid: 76aceb86c18403d47a2633a8d914baf6, type: 3}
+  leftAligned: 0
