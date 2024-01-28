@@ -2750,8 +2750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a17ec09af889a44bb4c23141f3e9eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textQueue:
-  - {fileID: 11400000, guid: aada66fb78110c747826dcf0858ce190, type: 2}
+  textQueue: []
   currentTextInputObject: {fileID: 0}
   addtYieldValue: 0.5
   playing: 0
