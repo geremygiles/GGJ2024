@@ -90,7 +90,7 @@ public class RhythmGame : MonoBehaviour
             // if the note time has passed, spawn the note and remove it from the "queue"
             if (loader.getPlayTime() >= loader.getKeyTimes()[0])
             {
-                GameObject Paw = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.Euler(0, 0, Random.Range(0,180)));
+                GameObject Paw = Instantiate(pawPrefab, new Vector3(pawSpawnPositions[loader.getKeys()[i] - 1].x, pawSpawnPositions[loader.getKeys()[i] - 1].y, -8), Quaternion.Euler(0, 0, Random.Range(0,0)));
 
                 Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
                 Paw.transform.GetComponentInChildren<Image>().color = newColor * (Time.deltaTime*100);
@@ -115,7 +115,7 @@ public class RhythmGame : MonoBehaviour
         TileDestroyed();
 
         // Calculating points:
-        float multiplier = tilesHit/maxTiles * 100;
+        //float multiplier = tilesHit/maxTiles * 100; // Divide by 0
 
         // Awarding points:
         // ... help here ... //

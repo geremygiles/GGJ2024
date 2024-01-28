@@ -23,4 +23,17 @@ public class PawCollision : MonoBehaviour
             RhythmGame.instance.TileDestroyed();
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        
+        if (other.CompareTag("Destroyer"))
+        {
+            if (other.GetComponentInParent<PawButton>().isPressed && !other.GetComponentInParent<PawButton>().tileInBox)
+            {
+                Destroy(gameObject);
+            }
+            
+        }
+    }
 }

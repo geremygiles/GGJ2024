@@ -10,6 +10,7 @@ TagManager:
   - BottomCollisionThreshold
   - PawTile
   - PawButton
+  - Destroyer
   layers:
   - Default
   - TransparentFX

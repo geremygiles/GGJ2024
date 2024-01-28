@@ -9,6 +9,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private int playerNum;
     PlayerInput playerInput;
     int activeActionMap = 0;
+
+    [SerializeField] PawButton[] pawButtons;
+
     private void Awake()
     {
         //menuController = GameObject.FindGameObjectWithTag("MenuController").GetComponent<MenuController>();
@@ -53,5 +56,25 @@ public class PlayerControls : MonoBehaviour
         {
             Singleton.Instance.TextController.ContinueText();
         }
+    }
+
+    private void OnRhythm1()
+    {
+        pawButtons[0].buttonPressed = true;
+    }
+
+    private void OnRhythm2()
+    {
+        pawButtons[1].buttonPressed = true;
+    }
+
+    private void OnRhythm3()
+    {
+        pawButtons[2].buttonPressed = true;
+    }
+
+    private void OnRhythm4()
+    {
+        pawButtons[3].buttonPressed = true;
     }
 }

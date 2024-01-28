@@ -12,8 +12,10 @@ public class PawButton : MonoBehaviour
     private float pauseTimer = 0;
 
     private bool canPress = true;
-    private bool tileInBox = false;
-    private bool isPressed = false;
+    public bool tileInBox = false;
+    public bool isPressed = false;
+
+    public bool buttonPressed = false;
     
 
     private float[] defaultAlphas = new float[2];
@@ -36,7 +38,7 @@ public class PawButton : MonoBehaviour
     void FixedUpdate()
     {
         // Honest to God I need to refactor the shit out of this
-        if(Input.GetKey(key) && buttonTimer < buttonHeldThreshold && canPress)
+        if (buttonPressed && buttonTimer < buttonHeldThreshold && canPress)
         {   
             ButtonPress();     
             buttonTimer += Time.deltaTime;
@@ -54,11 +56,38 @@ public class PawButton : MonoBehaviour
             buttonTimer = 0; 
         }
 
-        if(tileInBox && canPress && isPressed && pauseTimer == 0)
+        if(tileInBox && canPress && isPressed)
         {
             Destroy(tileToKill);
             RhythmGame.instance.AddScore(1);
+
+            Invoke("Wait", 0.3f);
         }
+    }
+
+    private void ButtonHit(int index)
+    {
+        switch (index) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void Wait()
+    {
+        tileInBox = false;
     }
 
     private void ButtonPress()
@@ -85,6 +114,7 @@ public class PawButton : MonoBehaviour
         }
 
         isPressed = false;
+        buttonPressed = false;
     }
 
     // Collision Handling:
@@ -93,8 +123,9 @@ public class PawButton : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("PawTile"))
         {
-            tileToKill = other.gameObject;
             tileInBox = true;
+
+            tileToKill = other.gameObject;
         }
     }
 
