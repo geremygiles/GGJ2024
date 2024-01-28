@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Temper
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Temper
   textString: 'How do you handle a orange cat''s temper?
 
 

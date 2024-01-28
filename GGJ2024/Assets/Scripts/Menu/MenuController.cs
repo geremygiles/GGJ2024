@@ -188,7 +188,7 @@ public class MenuController : MonoBehaviour
 
             for (int i = 0; i < player1Jokes.Length; i++)
             {
-                player1JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Jokes[i].name;
+                player1JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Jokes[i].title;
             }
 
             // Show Data
@@ -213,7 +213,7 @@ public class MenuController : MonoBehaviour
 
             for (int i = 0; i < player2Jokes.Length; i++)
             {
-                player2JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Jokes[i].name;
+                player2JokeMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Jokes[i].title;
             }
 
             // Moving menu

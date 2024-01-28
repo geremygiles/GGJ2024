@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bananas and Monkeys
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Bananas and Monkeys
   textString: "Today I heard that humans eat more bananas than monkeys. \n\nI can't
     remember the last time I saw them eat a monkey!"
   charSpeed: 2

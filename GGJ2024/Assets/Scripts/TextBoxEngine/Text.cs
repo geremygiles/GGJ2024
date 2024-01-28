@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Text : ScriptableObject
 {
     public Speaker speaker;
+    public string title;
     [TextArea(5, 10)]
     public string textString;
     public float charSpeed = 2;

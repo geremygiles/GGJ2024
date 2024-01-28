@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Why No More Jokes
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Why No More Jokes
   textString: 'Why aren''t there more orange cat jokes?
 
 

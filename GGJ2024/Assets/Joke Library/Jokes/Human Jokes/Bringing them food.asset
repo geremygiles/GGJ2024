@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bringing them Food
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Bringing them Food
   textString: I hate it when I try to bring my human food. They always do it for
     me, but they always look so disgusted when I do!
   charSpeed: 2

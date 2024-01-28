@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sad Lice
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Sad Lice
   textString: "Why were all the lice on the sphynx cat sad? \n\nBecause they were
     homeless!"
   charSpeed: 2

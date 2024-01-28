@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
   m_Name: Bad Student
   m_EditorClassIdentifier: 
-  speaker: {fileID: 0}
+  speaker: {fileID: 11400000, guid: 837d1d13a88d9ed43aa64e578f4d798a, type: 2}
+  title: Bad Student
   textString: "Why did the little bird get in trouble at school? \n\nBecause he was
     caught tweeting during a test!"
   charSpeed: 2

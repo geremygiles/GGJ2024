@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Going Outside
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
+  title: Going Outside
   textString: "Humans can go outside with no issues. \n\nBut when I wanna go outside,
     it suddenly becomes a problem!"
   charSpeed: 2
