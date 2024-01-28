@@ -1,9 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RhythmGame : MonoBehaviour
 {
+    // !!! ATTENTION !! //
+    // I am using this array of two ints to store both our player's score currently.
+    // We may need to write code to pick which index of the array we are manipulating
+    // depending on who the current player is. My default starting player is 1.
+
+    // Geremy, this may be where you need to link your players to this script.
+    public int[] playerScores = new int[2];
+    public int currPlayer = 0;
+
+    // Player1 = 0, Player2 = 1
+    // ETC
+
+
+
+    // Created an instance so I can reference this script in other scripts w/o
+    // having to serializefield or anything wacky like that...
     public static RhythmGame instance;
 
     [SerializeField]
@@ -19,9 +36,9 @@ public class RhythmGame : MonoBehaviour
 
 
     // Tile Info:
-    private int maxTiles = 0;
-    private int tilesHit = 0;
-    private int goneTiles = 0;
+    private int maxTiles;
+    private int tilesHit;
+    private int goneTiles;
 
 
     // Start is called before the first frame update
@@ -29,20 +46,15 @@ public class RhythmGame : MonoBehaviour
     {
         // We will only have 1 Rhythm Game Manager. Since we made it static, they can only share this same instance value... 
         instance = this;
+        
 
         // Set the spawn positions:
         SetPawSpawns();
         maxTiles = loader.getKeys().Count;
     }
 
-    private void Update()
-    {
-        Debug.Log("UPDATE");
-    }
-
     private void FixedUpdate()
     {
-        Debug.Log("FIXED UPDATE");
         // Enabling the game:
         if(loader.getSongStatus() && this.enabled)
         {
@@ -50,11 +62,12 @@ public class RhythmGame : MonoBehaviour
         }
         
         // This means the game is over
-        if(goneTiles == maxTiles)
+        /*if(goneTiles == maxTiles)
         {
             Reset();
-            //this.enabled = false;
+            this.enabled = false;
         }
+        But it doesn't fokin work*/
     }
 
     private void SetPawSpawns()
@@ -77,8 +90,10 @@ public class RhythmGame : MonoBehaviour
             // if the note time has passed, spawn the note and remove it from the "queue"
             if (loader.getPlayTime() >= loader.getKeyTimes()[0])
             {
-                Debug.Log("Spawn");
-                GameObject Paw = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.identity);
+                GameObject Paw = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.Euler(0, 0, Random.Range(0,180)));
+
+                Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+                Paw.transform.GetComponentInChildren<Image>().color = newColor * (Time.deltaTime*100);
 
                 loader.getKeys().RemoveAt(i);
                 loader.getKeyTimes().RemoveAt(i);
@@ -86,9 +101,6 @@ public class RhythmGame : MonoBehaviour
             }
             else
             {
-                Debug.Log("breaking");
-                Debug.Log(loader.getPlayTime());
-                Debug.Log(loader.getKeyTimes()[0]);
                 // else break from the for loop if the first note isn't ready to be played
                 break;
             }
@@ -101,6 +113,12 @@ public class RhythmGame : MonoBehaviour
     {
         tilesHit++;
         TileDestroyed();
+
+        // Calculating points:
+        float multiplier = tilesHit/maxTiles * 100;
+
+        // Awarding points:
+        // ... help here ... //
     }
 
     public void TileDestroyed()
