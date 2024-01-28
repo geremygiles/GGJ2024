@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -8,20 +7,10 @@ using UnityEngine;
 /// </summary>
 public class SongLoader : MonoBehaviour
 {
-
-    [SerializeField, Tooltip("Whether to display the key ID or not")]
-    private bool showKeyID;
-
-    [SerializeField, Tooltip("Prefabs for all paws, IN ORDER")]
-    private GameObject[] pawPrefabs;
-    [SerializeField, Tooltip("Spawn positions for all paws, IN ORDER")]
-    private Vector3[] pawSpawnPositions;
-
     private float playTime; // current playing time for the loaded song
     private bool songIsPlaying; // whether a song is currently playing or not
 
     // csv related fields for loading key number and time
-    private List<int> keyIDs = new List<int>();
     private List<int> keys = new List<int>();
     private List<float> keyHitTimes = new List<float>();
 
@@ -41,7 +30,7 @@ public class SongLoader : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        LoadSong("Song1"); // test line of code
+        LoadSong("Song1");
     }
 
     /// <summary>
@@ -50,72 +39,44 @@ public class SongLoader : MonoBehaviour
     private void Update()
     {
         if (songIsPlaying)
-        {
-
             playTime += Time.deltaTime;
-            SpawnNotes();
-        }
-    }
-
-    /// <summary>
-    /// Checks if notes can be spawned
-    /// </summary>
-    private void SpawnNotes()
-    {
-        // goes through each remaining note in the note list
-        for (int i = 0; i < keys.Count; i++)
-        {
-            // if the note time has passed, spawn the note and remove it from the "queue"
-            if (playTime >= keyHitTimes[0])
-            {
-                GameObject _newKey = Instantiate(pawPrefabs[keys[i] - 1], pawSpawnPositions[keys[i] - 1], Quaternion.identity);
-
-                if(showKeyID)
-                {
-                    _newKey.GetComponentInChildren<TextMeshProUGUI>().text = keyIDs[i].ToString();
-                    keyIDs.RemoveAt(i);
-                }
-
-                keys.RemoveAt(i);
-                keyHitTimes.RemoveAt(i);
-                i--; // makes sure notes aren't skipped
-            }
-            else
-            {
-                // else break from the for loop if the first note isn't ready to be played
-                break;
-            }
-        }
     }
 
     /// <summary>
     /// Loads a songs key input data
     /// </summary>
-    /// <param name="songFileName">Name of the file to load</param>
+    /// <param name=\"songFileName">Name of the file to load</param>
     public void LoadSong(string songFileName)
     {
         ResetSongData();
 
+        // Filepath Vars ------------------------------------- //
         string _filePath = "";
-#if UNITY_EDITOR
-        _filePath = $"{Application.dataPath}/Music Input/{songFileName}.csv";
-#else
-        _filePath = $"{Application.dataPath}/{songFileName}.csv";
-#endif
-
+        #if UNITY_EDITOR
+                _filePath = $"{Application.dataPath}/Music Input/{songFileName}.csv";
+        #else
+                _filePath = $"{Application.dataPath}/{songFileName}.csv";
+        #endif
         string[] _fileData = System.IO.File.ReadAllLines(_filePath);
+        
+        // Other Vars ---------------------------------------- //
+        float deviationThreshold = 0.5f;
 
         for (int i = 0; i < _fileData.Length; i++)
         {
             string[] _line = _fileData[i].Split(",");
-            keyIDs.Add(int.Parse(_line[0]));
             keys.Add(int.Parse(_line[1]));
             keyHitTimes.Add(float.Parse(_line[2] + songDelayStartTime));
+
+            // Adjust key hit deviation:
+            if (i > 0 && keyHitTimes[i] - keyHitTimes[i-1] < deviationThreshold)
+            {
+                keyHitTimes[i] = keyHitTimes[i-1];
+            }
         }
 
         songIsPlaying = true;
         songDelayStartTime = 0;
-
     }
 
     /// <summary>
@@ -127,4 +88,25 @@ public class SongLoader : MonoBehaviour
         keys.Clear();
         keyHitTimes.Clear();
     }
+
+    public bool getSongStatus()
+    {
+        return songIsPlaying;
+    }
+
+    public float getPlayTime()
+    {
+        return playTime;
+    }
+
+    public List<int> getKeys()
+    {
+        return keys;
+    }
+
+    public List<float> getKeyTimes()
+    {
+        return keyHitTimes;
+    }
+
 }
