@@ -13,19 +13,37 @@ public static class PointManager
     private static float player2TotalPoints = BaseStartingPoints;
 
     // Vars for calculating how many points a player earns per round
-    private static int playerNumber;
+    private static int currentPlayerNumber;
+    
+    // round vars
     private const float BasePointsPerRound = 100f;
-    private static int roundNumber = 1;
+    private static int roundNumber = 0;
     private const float BaseRoundMultiplier = 1f;
     private static float additionalRoundMultiplier = 0.5f;
     private static float thisRoundsBasePoints;
+
+    // Vars for calculating how many points earned per turn
+    private static float pointsGainedThisTurn;
+    private const float DefaultPointsGainedDifficultyMultiplier = 1f;
+    private const float MeduimDifficultyMultiplier = 1.2f;
+    private const float HardDifficultyMultiplier = 1.4f;
+    private static float pointsGainedDifficultyMultiplier;
+
+
+    // tile vars
     private static float pointsPerTileHit;
     private static int totalTiles;
     private static int tilesHit;
     private static int minTiles;
     private static bool minTilesAcheived;
     private static float minTilesAcheivedReward;
-    private static bool minTilesRewardGiven;
+    private const float MinTilePercentage = .5f;
+
+    // rebuttle vars
+    private static int DefaultRebuttleChoice = 0;
+    // 0 = nuetral, 1 = cheer, 2 = heckel
+    private static int currentRebuttleChoice;
+    private const float RebuttelBonus = .2f;
 
     #region Getters
 
@@ -33,6 +51,26 @@ public static class PointManager
 
     public static float Player2TotalPoints { get { return player2TotalPoints; } }
 
+    public static int RebuttleChoice
+    {
+        get { return currentRebuttleChoice; }
+    }
+
+    #endregion
+
+    #region Setters
+
+    public static void SetRebuttleChoice(int rebuttleChoice)
+    {
+        if (rebuttleChoice >= 0 && rebuttleChoice <= 2)
+        {
+            currentRebuttleChoice = rebuttleChoice;
+        }
+        else
+        {
+            currentRebuttleChoice = DefaultRebuttleChoice;
+        }
+    }
 
     #endregion
 
@@ -50,28 +88,78 @@ public static class PointManager
 
     #region Methods Running Round to Round
 
-    public static void RoundStart(int totalTilesInRound)
+    public static void RoundStart()
     {
-        thisRoundsBasePoints = BasePointsPerRound * (BaseRoundMultiplier + additionalRoundMultiplier * (roundNumber - 1));
-        minTilesAcheivedReward = thisRoundsBasePoints * 0.5f;
-        totalTiles = totalTilesInRound;
-        minTiles = (int)(totalTiles * 0.15);
+        roundNumber++;
     }
-
 
     public static void RoundEnded()
     {
-
+        if (minTilesAcheived)
+        {
+            CalculateFinalTotal();
+        }
+        else
+        {
+            AwardPointsToOpponent();
+        }
     }
 
-    public static void TileHit(int numTilesHit)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="totalNumberTiles"></param>
+    /// <param name="currentPlayer">1 = player1, 2 = player2</param>
+    /// <param name="jokeDifficulty">0 = easy, 1 = medium, 2 = hard</param>
+    public static void StartTurn(int totalNumberTiles, int currentPlayer, int jokeDifficulty)
     {
-        tilesHit += numTilesHit;
-        
-        if (tilesHit >= minTiles)
+        switch (jokeDifficulty)
         {
-            AddPlayerPoints(playerNumber, pointsPerTileHit);
+            case 0:
+                pointsGainedDifficultyMultiplier = DefaultPointsGainedDifficultyMultiplier;
+                break;
+
+            case 1:
+                pointsGainedDifficultyMultiplier = MeduimDifficultyMultiplier;
+                break;
+
+            case 2:
+                pointsGainedDifficultyMultiplier = HardDifficultyMultiplier;
+                break;
+
+            default: break;
         }
+
+        thisRoundsBasePoints = BasePointsPerRound * (BaseRoundMultiplier + additionalRoundMultiplier * (roundNumber - 1)) * pointsGainedDifficultyMultiplier;
+        minTilesAcheived = false;
+        totalTiles = totalNumberTiles;
+        minTiles = (int)(totalNumberTiles * MinTilePercentage);
+        minTilesAcheivedReward = thisRoundsBasePoints * 0.5f;
+        pointsPerTileHit = thisRoundsBasePoints / (totalTiles - minTiles);
+        pointsGainedThisTurn = 0;
+        currentPlayerNumber = currentPlayer;
+    }
+
+    public static void TileHit()
+    {
+        tilesHit++;
+        
+        if (tilesHit == minTiles)
+        {
+            RewardMinTilesReward();
+            minTilesAcheived = true;
+        }
+        else if (tilesHit > minTiles)
+        {
+            pointsGainedThisTurn += pointsPerTileHit;
+            AddPlayerPoints(currentPlayerNumber, pointsPerTileHit);
+        }
+    }
+
+    private static void RewardMinTilesReward()
+    {
+        AddPlayerPoints(currentPlayerNumber, minTilesAcheivedReward);
+        pointsGainedThisTurn += minTilesAcheivedReward;
     }
 
     private static void AddPlayerPoints(int playerGettingPoints, float pointsToAdd)
@@ -90,7 +178,74 @@ public static class PointManager
 
     private static void CalculateFinalTotal()
     {
+        switch (currentRebuttleChoice)
+        {
+            case 1:
+                if (PlayerDidGood())
+                {
+                    AddPlayerPoints(GetOtherPlayer(),
+                        pointsGainedThisTurn * RebuttelBonus);
+                }
+                else
+                {
+                    AddPlayerPoints(currentPlayerNumber,
+                        pointsGainedThisTurn * RebuttelBonus);
+                }
+                break;
 
+            case 2:
+                if (PlayerDidGood())
+                {
+                    AddPlayerPoints(currentPlayerNumber,
+                        pointsGainedThisTurn * RebuttelBonus);
+                }
+                else
+                {
+                    AddPlayerPoints(GetOtherPlayer(),
+                        pointsGainedThisTurn * RebuttelBonus);
+                }
+                break;
+
+            case 0:
+            default:
+                break;
+        }
+    }
+
+    private static void AwardPointsToOpponent()
+    {
+        if (currentPlayerNumber == 1)
+        {
+            AddPlayerPoints(2, thisRoundsBasePoints);
+        }
+        else
+        {
+            AddPlayerPoints(1, thisRoundsBasePoints);
+        }
+    }
+
+    private static bool PlayerDidGood()
+    {
+        if ((tilesHit - minTiles) / (totalTiles - minTiles) >= 0.7)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private static int GetOtherPlayer()
+    {
+        if (currentPlayerNumber == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
     }
 
     #endregion
