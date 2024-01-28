@@ -73,6 +73,9 @@ public class MenuController : MonoBehaviour
             player1EventSystem.SetSelectedGameObject(player1CatMenu.buttons[0].gameObject);
 
             player1CategoriesOpen = true;
+
+            // Set new controls
+            PlayerActionController.ChangePlayerState(1, 1);
         }
         
         if (playerNum == 2)
@@ -106,8 +109,11 @@ public class MenuController : MonoBehaviour
             player2EventSystem.SetSelectedGameObject(player2CatMenu.buttons[0].gameObject);
 
             player2CategoriesOpen = true;
+
+            // Set new controls
+            PlayerActionController.ChangePlayerState(2, 1);
         }
-        
+
 
     }
 
@@ -176,6 +182,10 @@ public class MenuController : MonoBehaviour
 
             player1MenuCanvas.GetComponent<PlayerCanvas>().shade.SetActive(false);
             player1CategoriesOpen = false;
+
+            // Set new controls
+            PlayerActionController.ChangePlayerState(1, 0);
+
         }
         if (playerNum == 2)
         {
@@ -183,6 +193,9 @@ public class MenuController : MonoBehaviour
 
             player2MenuCanvas.GetComponent<PlayerCanvas>().shade.SetActive(false);
             player2CategoriesOpen = false;
+
+            // Set new controls
+            PlayerActionController.ChangePlayerState(2, 0);
         }
     }
 
@@ -195,7 +208,7 @@ public class MenuController : MonoBehaviour
             }
             else if (player1CategoriesOpen)
             {
-              //  CloseCategories(1);
+                CloseCategories(1);
             }
         }
 
@@ -207,7 +220,7 @@ public class MenuController : MonoBehaviour
             }
             else if (player2CategoriesOpen)
             {
-               // CloseCategories(2);
+                CloseCategories(2);
             }
         }
     }
