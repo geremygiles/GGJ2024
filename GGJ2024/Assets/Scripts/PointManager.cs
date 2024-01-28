@@ -9,7 +9,7 @@ public static class PointManager
     private const int MaximumPossiblePoints = BaseStartingPoints * 2;
 
     // Vars for keeping track of how many points a player has total over all rounds
-    private static float player1TotalPoints = BaseStartingPoints;
+    private static float player1TotalPoints = 2000;
     private static float player2TotalPoints = BaseStartingPoints;
 
     // Vars for calculating how many points a player earns per round
@@ -138,6 +138,15 @@ public static class PointManager
         pointsPerTileHit = thisRoundsBasePoints / (totalTiles - minTiles);
         pointsGainedThisTurn = 0;
         currentPlayerNumber = currentPlayer;
+
+        if (player1TotalPoints >= MaximumPossiblePoints)
+        {
+            Singleton.Instance.GameManager.PlayerWins(1);
+        }
+        else if (player2TotalPoints >= MaximumPossiblePoints)
+        {
+            Singleton.Instance.GameManager.PlayerWins(2);
+        }
     }
 
     public static void TileHit()

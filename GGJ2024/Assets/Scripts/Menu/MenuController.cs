@@ -449,6 +449,8 @@ public class MenuController : MonoBehaviour
 
             Singleton.Instance.TextController.ContinueText();
             this.enabled = false;
+
+            Singleton.Instance.GameManager.StartRound();
         }
     }
 }
