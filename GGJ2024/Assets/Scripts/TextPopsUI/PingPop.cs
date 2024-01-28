@@ -18,6 +18,7 @@ public class PingPop : MonoBehaviour
     [SerializeField] 
     private float textKillTime;
 
+    [Range(0f, 2f)]
     [SerializeField]
     private int performance = 0;
 
