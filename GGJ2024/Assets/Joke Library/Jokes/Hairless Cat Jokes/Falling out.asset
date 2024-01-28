@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Falling out
+  m_Name: Falling Out
   m_EditorClassIdentifier: 
-  title: Falling out
-  joke: "What happened between a sphynx cat and its fur? \n\nThey had a falling out!"
+  speaker: {fileID: 0}
+  textString: ' What happened between a sphynx cat and its fur?
+
+
+    They had a
+    falling out!'
+  charSpeed: 2

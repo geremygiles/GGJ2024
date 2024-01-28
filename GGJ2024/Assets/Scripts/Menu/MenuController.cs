@@ -120,7 +120,7 @@ public class MenuController : MonoBehaviour
             // Show Catergory Name Data
             for (int i = 0; i < player1Categories.Count; i++)
             {
-                player1CategoryMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Categories[i].categoryName;
+                player1CategoryMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player1Categories[i].name;
             }
 
             // Set selected item to first
@@ -155,7 +155,7 @@ public class MenuController : MonoBehaviour
             // Show Catergory Name Data
             for (int i = 0; i < player2Categories.Count; i++)
             {
-                player2CategoryMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Categories[i].categoryName;
+                player2CategoryMenu.buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = player2Categories[i].name;
             }
 
             // Set selected item to first

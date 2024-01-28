@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Sad lice
+  m_Name: Sad Lice
   m_EditorClassIdentifier: 
-  title: I can't understand those guys...
-  joke: "Why were all the lice on the sphyn cat sad? \n\nBecause they were homeless!"
+  speaker: {fileID: 0}
+  textString: "Why were all the lice on the sphynx cat sad? \n\nBecause they were
+    homeless!"
+  charSpeed: 2

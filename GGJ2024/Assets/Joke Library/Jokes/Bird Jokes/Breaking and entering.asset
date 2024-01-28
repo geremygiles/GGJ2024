@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Breaking and entering
+  m_Name: Breaking and Entering
   m_EditorClassIdentifier: 
-  title: Breaking and entering
-  joke: "How did the bird break into the house? \n\nWith a crow-bar!"
+  speaker: {fileID: 0}
+  textString: 'How did the bird break into the house?
+
+
+    With a crow-bar!'
+  charSpeed: 2

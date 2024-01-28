@@ -228,6 +228,7 @@ public class TextController : MonoBehaviour
             }
             else
             {
+                currentTextInputObject = null;
                 Close();
             }
         }

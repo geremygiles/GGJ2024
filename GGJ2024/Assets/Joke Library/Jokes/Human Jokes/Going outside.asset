@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Going outside
+  m_Name: Going Outside
   m_EditorClassIdentifier: 
   speaker: {fileID: 0}
-  textString: I be going outside and shit on God
+  textString: "Humans can go outside with no issues. \n\nBut when I wanna go outside,
+    it suddenly becomes a problem!"
   charSpeed: 2

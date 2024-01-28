@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: More jokes
+  m_Name: Why No More Jokes
   m_EditorClassIdentifier: 
-  title: More jokes
-  joke: "Why aren't there more orange cat jokes? \n\nSomeone told them to a orange
-    cat."
+  speaker: {fileID: 0}
+  textString: 'Why aren''t there more orange cat jokes?
+
+
+    Someone told them to
+    a orange cat.'
+  charSpeed: 2

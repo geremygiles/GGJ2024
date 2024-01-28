@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Joke about fur
+  m_Name: Joke about Fur
   m_EditorClassIdentifier: 
-  title: Joke about fur
-  joke: "I was gonna joke about a sphynx cat's fur. \n\nBut then I remembered there
-    was nothing to joke about!\r"
+  speaker: {fileID: 0}
+  textString: "I was gonna joke about a sphynx cat's fur. \n\nBut then I remembered
+    there was nothing to joke about!"
+  charSpeed: 2
