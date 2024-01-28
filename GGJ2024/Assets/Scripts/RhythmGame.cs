@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RhythmGame : MonoBehaviour
 {
+    public static RhythmGame instance;
+
     [SerializeField]
     private GameObject pawPrefab;
 
@@ -17,78 +17,37 @@ public class RhythmGame : MonoBehaviour
     [SerializeField]
     private SongLoader loader;
 
-    
 
-    private float[] defaultAlphas = new float[2];
-    private Component[] images = new Component[2];
+    // Tile Info:
+    private int maxTiles = 0;
+    private int tilesHit = 0;
+    private int goneTiles = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        // We will only have 1 Rhythm Game Manager. Since we made it static, they can only share this same instance value... 
+        instance = this;
+
         // Set the spawn positions:
         SetPawSpawns();
-
-        images = buttons[0].GetComponentsInChildren<Image>();
-        int index = 0;
-        foreach (Image image in images)
-        {
-            defaultAlphas[index] = image.color.a;
-            index++;
-        }
+        maxTiles = loader.getKeys().Count;
     }
 
-    private void Update()
-    {
-        if(loader.getSongStatus())
-            SpawnNotes();
-    }
-
-    // Update is called once per frame
     private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Alpha1))
-        {   ButtonPress(0);     }
-        else
-        {   ButtonRelease(0);   }
-
-
-        if(Input.GetKey(KeyCode.Alpha2))
-        {   ButtonPress(1);     }
-        else
-        {   ButtonRelease(1);   }
-
-
-        if(Input.GetKey(KeyCode.Alpha3))
-        {   ButtonPress(2);     }
-        else
-        {   ButtonRelease(2);   }
-
-
-        if(Input.GetKey(KeyCode.Alpha4))
-        {   ButtonPress(3);     }
-        else
-        {   ButtonRelease(3);   }
-    }
-
-    private void ButtonPress(int buttonCode)
-    {
-        images = buttons[buttonCode].GetComponentsInChildren<Image>();
-        foreach(Image image in images)
+        // Enabling the game:
+        if(loader.getSongStatus() && this.enabled)
         {
-            var temp = image.color;
-            temp.a = 1f;
-            image.color = temp;
+            SpawnNotes();
         }
-    }
-
-    private void ButtonRelease(int buttonCode)
-    {
-        images = buttons[buttonCode].GetComponentsInChildren<Image>();
-        foreach(Image image in images)
+        
+        // This means the game is over
+        if(goneTiles == maxTiles)
         {
-            var temp = image.color;
-            temp.a = defaultAlphas[0];
-            image.color = temp;
+            Reset();
+            this.enabled = false;
         }
     }
 
@@ -112,7 +71,7 @@ public class RhythmGame : MonoBehaviour
             // if the note time has passed, spawn the note and remove it from the "queue"
             if (loader.getPlayTime() >= loader.getKeyTimes()[0])
             {
-                GameObject newKey = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.identity);
+                GameObject Paw = Instantiate(pawPrefab, pawSpawnPositions[loader.getKeys()[i] - 1], Quaternion.identity);
 
                 loader.getKeys().RemoveAt(i);
                 loader.getKeyTimes().RemoveAt(i);
@@ -124,5 +83,24 @@ public class RhythmGame : MonoBehaviour
                 break;
             }
         }
+    }
+
+
+    // Tile logistics:
+    public void AddScore(int score)
+    {
+        tilesHit++;
+        TileDestroyed();
+    }
+
+    public void TileDestroyed()
+    {   goneTiles++;    }
+
+    public void Reset()
+    {
+        tilesHit = 0;
+        goneTiles = 0;
+        maxTiles = 0;
+        loader.ResetSongData();
     }
 }

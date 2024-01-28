@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PawGoal
   - TileKiller
+  - MenuController
+  - TopCollisionThreshold
+  - BottomCollisionThreshold
+  - PawTile
+  - PawButton
   layers:
   - Default
   - TransparentFX

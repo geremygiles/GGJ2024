@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PawCollision : MonoBehaviour
@@ -14,11 +15,12 @@ public class PawCollision : MonoBehaviour
         GetComponent<Rigidbody>().velocity = _speed * Vector3.down;
     }
 
-    private void OnTriggerExit(Collider other) 
-    {
+    private void OnTriggerExit(Collider other) {
+        // Deleting the Paw when entering a kill box:
         if(other.gameObject.tag == "TileKiller")
         {
             Destroy(gameObject);
+            RhythmGame.instance.TileDestroyed();
         }
     }
 }

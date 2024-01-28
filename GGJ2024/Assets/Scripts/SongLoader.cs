@@ -82,9 +82,10 @@ public class SongLoader : MonoBehaviour
     /// <summary>
     /// Resets all song data
     /// </summary>
-    private void ResetSongData()
+    public void ResetSongData()
     {
         playTime = 0;
+        songIsPlaying = false;
         keys.Clear();
         keyHitTimes.Clear();
     }
@@ -92,6 +93,11 @@ public class SongLoader : MonoBehaviour
     public bool getSongStatus()
     {
         return songIsPlaying;
+    }
+
+    public void setSongStatus(bool newStatus)
+    {
+        songIsPlaying = newStatus;
     }
 
     public float getPlayTime()
