@@ -73,6 +73,27 @@ public class MenuController : MonoBehaviour
         OpenShade();
     }
 
+    private void OnDisable()
+    {
+    player1CategoriesOpen = false;
+    player2CategoriesOpen = false;
+    player1JokesOpen = false;
+    player2JokesOpen = false;
+    player1ConfirmOpen = false;
+    player2ConfirmOpen = false;
+    player1Ready = false;
+    player2Ready = false;
+
+
+    player1Categories = new List<Category>();
+    player2Categories = new List<Category>();
+
+    player1CurrentCatIndex = 0;
+    player1CurrentJokeIndex = 0;
+    player2CurrentCatIndex = 0;
+    player2CurrentJokeIndex = 0;
+}
+
     // Update is called once per frame
     void Update()
     {
@@ -427,6 +448,7 @@ public class MenuController : MonoBehaviour
             Debug.Log("Rhythm Time!");
 
             Singleton.Instance.TextController.ContinueText();
+            this.enabled = false;
         }
     }
 }

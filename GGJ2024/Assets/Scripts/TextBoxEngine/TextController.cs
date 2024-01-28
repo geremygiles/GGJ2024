@@ -48,6 +48,12 @@ public class TextController : MonoBehaviour
     /// </summary>
     public void ContinueText()
     {
+        if (currentTextInputObject == null)
+        {
+            PlayNext();
+            return;
+        }
+
         if (!playing)
         {
             IterateSubstring();
@@ -68,7 +74,6 @@ public class TextController : MonoBehaviour
     public void Enqueue(Text text)
     {
         textQueue.Add(text);
-        Debug.Log(textQueue.Count);
     }
 
     /// <summary>
@@ -88,6 +93,8 @@ public class TextController : MonoBehaviour
     /// </summary>
     private void PlayNext()
     {
+        if (textQueue.Count == 0) return;
+
         Reset();
 
         if (!open) Open();
@@ -97,8 +104,6 @@ public class TextController : MonoBehaviour
 
         // Remove from queue
         textQueue.RemoveAt(0);
-
-        Debug.Log("removed object, current count: " + textQueue.Count);
 
         ExtractString();
         LoadSpeakerData();
@@ -201,11 +206,20 @@ public class TextController : MonoBehaviour
         { 
             substringIndex++;
             index = 0;
+
+            // Clear current text
+            currentOutputString = "";
+            UpdateText();
+
+            playing = true;
+
+            StartCoroutine(TimedPrint());
         }
         
         else
         {
             Reset();
+            UpdateText();
 
             // Items in the queue
             if (textQueue.Count > 0)
@@ -218,13 +232,7 @@ public class TextController : MonoBehaviour
             }
         }
 
-        // Clear current text
-        currentOutputString = "";
-        UpdateText();
-
-        playing = true;
-
-        StartCoroutine(TimedPrint());
+        
     }
 
     /// <summary>
