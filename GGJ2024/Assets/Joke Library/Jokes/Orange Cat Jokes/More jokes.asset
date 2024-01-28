@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: Fat Cat
+  m_Name: More jokes
   m_EditorClassIdentifier: 
-  title: Fat Cats, Amirite?
-  joke: Them cats be fat, amirite?!
+  title: More jokes
+  joke: "Why aren't there more orange cat jokes? \n\nSomeone told them to a orange
+    cat."

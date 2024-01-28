@@ -15,3 +15,5 @@ MonoBehaviour:
   categoryName: Dog Jokes
   jokes:
   - {fileID: 11400000, guid: 2eaacfb24d3c3c04f9752697f4db5e21, type: 2}
+  - {fileID: 11400000, guid: 2906d78949827c0428083b6390cba527, type: 2}
+  - {fileID: 11400000, guid: 7d1d65c736d977b4fa6f8ff21b5c6cef, type: 2}

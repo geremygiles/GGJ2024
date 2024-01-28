@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7e0c7f04690e34cb4c7667b75c66ce, type: 3}
-  m_Name: I can't understand those guys
+  m_Name: Going outside
   m_EditorClassIdentifier: 
-  title: I can't understand those guys...
-  joke: "Dogs... I can never understand those guys. \n\nThey really do be like \"BRAWH
-    RAWR RARARARAR\" \n\nAnd then I just kinda laugh and agree."
+  title: Going outside
+  joke: "Humans can go outside no issues. \n\nBut when I wanna go outside, it suddenly
+    becomes a problem!"

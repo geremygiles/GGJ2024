@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
-  m_Name: Test Jokes
+  m_Name: Human Jokes
   m_EditorClassIdentifier: 
-  categoryName: Test Jokes
+  categoryName: Fat Cat Jokes
   jokes:
-  - {fileID: 11400000, guid: 2c484e7003b872947ad302ed2774a9f8, type: 2}
-  - {fileID: 11400000, guid: 53564a96d04b12d458c4e7751bd066e6, type: 2}
-  - {fileID: 11400000, guid: c828056e2e35a6946becf8d16bc2044b, type: 2}
+  - {fileID: 11400000, guid: 89cf7593663c250428620471e2ff746d, type: 2}
+  - {fileID: 11400000, guid: aada66fb78110c747826dcf0858ce190, type: 2}
+  - {fileID: 11400000, guid: 3c5732cc313a6ab4c8836660cff9797f, type: 2}
