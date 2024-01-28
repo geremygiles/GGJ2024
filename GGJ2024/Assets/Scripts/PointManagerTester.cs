@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PointManagerTester : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
         PointManager.RoundStart();
         PointManager.StartTurn(100, 1, 1);
         PointManager.SetRebuttleChoice(0);
@@ -22,5 +20,4 @@ public class PointManagerTester : MonoBehaviour
         Debug.Log("1: " + PointManager.Player1TotalPoints);
         Debug.Log("2: " + PointManager.Player2TotalPoints);
     }
-
 }

@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class RhythmGame : MonoBehaviour
 {
+    // !!! ATTENTION !! //
+    // I am using this array of two ints to store both our player's score currently.
+    // We may need to write code to pick which index of the array we are manipulating
+    // depending on who the current player is. My default starting player is 1.
+
+    // Geremy, this may be where you need to link your players to this script.
+    public int[] playerScores = new int[2];
+    public int currPlayer = 0;
+
+    // Player1 = 0, Player2 = 1
+    // ETC
+
+
+
+    // Created an instance so I can reference this script in other scripts w/o
+    // having to serializefield or anything wacky like that...
     public static RhythmGame instance;
 
     [SerializeField]
@@ -19,9 +35,9 @@ public class RhythmGame : MonoBehaviour
 
 
     // Tile Info:
-    private int maxTiles = 0;
-    private int tilesHit = 0;
-    private int goneTiles = 0;
+    private int maxTiles;
+    private int tilesHit;
+    private int goneTiles;
 
 
     // Start is called before the first frame update
@@ -29,6 +45,7 @@ public class RhythmGame : MonoBehaviour
     {
         // We will only have 1 Rhythm Game Manager. Since we made it static, they can only share this same instance value... 
         instance = this;
+        
 
         // Set the spawn positions:
         SetPawSpawns();
@@ -44,11 +61,12 @@ public class RhythmGame : MonoBehaviour
         }
         
         // This means the game is over
-        if(goneTiles == maxTiles)
+        /*if(goneTiles == maxTiles)
         {
             Reset();
             this.enabled = false;
         }
+        But it doesn't fokin work*/
     }
 
     private void SetPawSpawns()
@@ -91,6 +109,12 @@ public class RhythmGame : MonoBehaviour
     {
         tilesHit++;
         TileDestroyed();
+
+        // Calculating points:
+        float multiplier = tilesHit/maxTiles * 100;
+
+        // Awarding points:
+        // ... help here ... //
     }
 
     public void TileDestroyed()
