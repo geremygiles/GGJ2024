@@ -49,6 +49,9 @@ public class PlayerControls : MonoBehaviour
 
     private void OnProceed()
     {
-        Singleton.Instance.TextController.ContinueText();
+        if (Singleton.Instance.MenuController.player1Ready == Singleton.Instance.MenuController.player2Ready)
+        {
+            Singleton.Instance.TextController.ContinueText();
+        }
     }
 }

@@ -43,8 +43,8 @@ public class MenuController : MonoBehaviour
     private bool player2JokesOpen = false;
     private bool player1ConfirmOpen = false;
     private bool player2ConfirmOpen = false;
-    private bool player1Ready = false;
-    private bool player2Ready = false;
+    public bool player1Ready = false;
+    public bool player2Ready = false;
 
 
     private List<Category> player1Categories = new List<Category>();

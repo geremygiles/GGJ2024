@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cat_In_The_Cap
   m_EditorClassIdentifier: 
   speakerName: Cat In The Cap
-  face: {fileID: 21300000, guid: e68da36bcb3e3da4c85871fdfae590cd, type: 3}
+  face: {fileID: 21300000, guid: efcf75f650188ed48b96a4dfc0698015, type: 3}
   leftAligned: 1

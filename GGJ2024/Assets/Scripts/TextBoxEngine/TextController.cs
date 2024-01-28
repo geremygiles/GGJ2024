@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -83,9 +84,12 @@ public class TextController : MonoBehaviour
     /// <param name="speaker"></param>
     public void Enqueue(Text text, Speaker speaker)
     {
-        text.speaker = speaker;
+        Text tempObject = ScriptableObject.CreateInstance("Text") as Text;
+        tempObject.speaker = speaker;
+        tempObject.textString = text.textString;
+        tempObject.charSpeed = text.charSpeed;
 
-        Enqueue(text);
+        Enqueue(tempObject);
     }
     
     /// <summary>
