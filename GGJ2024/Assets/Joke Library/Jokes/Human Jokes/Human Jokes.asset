@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7657522acd6fe44a129aea8f4801a4, type: 3}
-  m_Name: Dog Jokes
+  m_Name: Human Jokes
   m_EditorClassIdentifier: 
-  categoryName: Dog Jokes
+  categoryName: Fat Cat Jokes
   jokes:
-  - {fileID: 11400000, guid: 2eaacfb24d3c3c04f9752697f4db5e21, type: 2}
-  - {fileID: 11400000, guid: 2906d78949827c0428083b6390cba527, type: 2}
-  - {fileID: 11400000, guid: 7d1d65c736d977b4fa6f8ff21b5c6cef, type: 2}
+  - {fileID: 11400000, guid: 89cf7593663c250428620471e2ff746d, type: 2}
+  - {fileID: 11400000, guid: aada66fb78110c747826dcf0858ce190, type: 2}
+  - {fileID: 11400000, guid: 3c5732cc313a6ab4c8836660cff9797f, type: 2}
+  - {fileID: 11400000, guid: 3c5732cc313a6ab4c8836660cff9797f, type: 2}
