@@ -111,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5642524757697962369
 CanvasRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Joke 1
+  m_text: Joke 1 Placeholder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}
   m_sharedMaterial: {fileID: -9149388752173996725, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}
@@ -1307,7 +1307,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4137517012057559782
 CanvasRenderer:
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Joke 3
+  m_text: Joke 3 Placeholder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}
   m_sharedMaterial: {fileID: -9149388752173996725, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}
@@ -1809,7 +1809,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6599232837412436579
 CanvasRenderer:
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Joke 2
+  m_text: Joke 2 Placeholder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}
   m_sharedMaterial: {fileID: -9149388752173996725, guid: d6834b4b6fb9a31489d92abe721c2f1f, type: 2}

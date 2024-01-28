@@ -310,7 +310,7 @@ public class MenuController : MonoBehaviour
         {
             player1CurrentJokeIndex = jokeIndex;
 
-            player1SelectedJoke = player1Categories[player1CurrentCatIndex].jokes[0];
+            player1SelectedJoke = player1Categories[player1CurrentCatIndex].jokes[jokeIndex];
 
             ShowConfirmPrompt(1);
         }
@@ -318,7 +318,7 @@ public class MenuController : MonoBehaviour
         {
             player2CurrentJokeIndex = jokeIndex;
 
-            player2SelectedJoke = player2Categories[player2CurrentCatIndex].jokes[0];
+            player2SelectedJoke = player2Categories[player2CurrentCatIndex].jokes[jokeIndex];
 
             ShowConfirmPrompt(2);
         }

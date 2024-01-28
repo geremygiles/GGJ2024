@@ -6,5 +6,5 @@ using UnityEngine;
 public class Category : ScriptableObject
 {
     public string categoryName;
-    public Joke[] jokes;
+    public Joke[] jokes = new Joke[3];
 }
