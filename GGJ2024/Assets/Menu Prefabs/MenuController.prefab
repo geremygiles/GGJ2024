@@ -52,6 +52,10 @@ MonoBehaviour:
   confirmPromptPrefab: {fileID: 7915181762122270430, guid: ff6c6814a6987e447960c1184fcbd7e3, type: 3}
   player1EventSystem: {fileID: 0}
   player2EventSystem: {fileID: 0}
+  player1Speaker: {fileID: 0}
+  player2Speaker: {fileID: 0}
+  player1Ready: 0
+  player2Ready: 0
 --- !u!114 &6905630457336855982
 MonoBehaviour:
   m_ObjectHideFlags: 0

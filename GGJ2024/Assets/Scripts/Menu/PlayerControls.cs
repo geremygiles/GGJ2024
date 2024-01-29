@@ -25,6 +25,10 @@ public class PlayerControls : MonoBehaviour
     /// <param name="actionMapIndex">0 = Rhythm, 1 = Menu</param>
     public void ChangePlayerState(int actionMapIndex)
     {
+        // TEMP FIX FOR A BUG
+        playerInput = GetComponent<PlayerInput>();
+        //
+
         playerInput.actions.actionMaps[activeActionMap].Disable();
         activeActionMap = actionMapIndex;
         playerInput.actions.actionMaps[activeActionMap].Enable();
